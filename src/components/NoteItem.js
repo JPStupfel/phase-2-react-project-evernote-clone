@@ -1,10 +1,13 @@
 import React from "react";
 
-function NoteItem() {
+function NoteItem({note, onClickNoteItem}) {
+
+  let trunc = note.body.slice(0,100)
+
   return (
-    <li>
-      <h2>Title</h2>
-      <p>Caption...</p>
+    <li onClick={()=>onClickNoteItem(note)}>
+      <h2>{note.title}</h2>
+      <p>{`${trunc}...`}</p>
     </li>
   );
 }
