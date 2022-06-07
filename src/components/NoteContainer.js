@@ -6,7 +6,7 @@ import Content from "./Content";
 function NoteContainer() {
 
   const [notes, setNotes] = useState([])
-  const [content, setContent] = useState({status: 'no note selected'})
+  const [content, setContent] = useState({})
 
   //can be 4 options: noNote, showNote, editNote, addNote
   const [contentStatus, setContentStatus]=useState('noNote')
@@ -19,6 +19,7 @@ function NoteContainer() {
     ()=>fetch('http://localhost:3000/notes').then(r=>r.json()).then(data=>setNotes(data)),[]
   )
   
+
   function onClickNoteItem(obj){
     setContent(obj)
     setContentStatus('showNote')
@@ -33,6 +34,9 @@ function NoteContainer() {
     setContentStatus('addNote')
   }
 
+  function onCLickEditButton(){
+    setContentStatus('editNote')
+  }
   
 
 
@@ -46,7 +50,11 @@ function NoteContainer() {
         onClickNoteItem= {onClickNoteItem} 
         onClickNewButton={onClickNewButton}
         notes={filterNotes} />
-        <Content updateContent={updateContent} contentStatus={contentStatus} content={content} />
+        <Content
+        updateContent={updateContent} contentStatus={contentStatus} 
+        content={content}
+        onCLickEditButton={onCLickEditButton}
+        />
       </div>
     </>
   );
