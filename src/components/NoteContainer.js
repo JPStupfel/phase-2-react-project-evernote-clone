@@ -15,6 +15,8 @@ function NoteContainer() {
 
   const filterNotes = notes.length ? notes.filter(e=>e.title.toLowerCase().includes(searchBy.toLowerCase())) : notes
 
+  const sortedNotes = filterNotes.sort((a,b)=> a['id']> b['id'])
+
   useEffect(
     ()=>fetch('http://localhost:3000/notes').then(r=>r.json()).then(data=>setNotes(data)),[]
   )
@@ -52,7 +54,7 @@ function NoteContainer() {
         setContentStatus={setContentStatus}
         onClickNoteItem= {onClickNoteItem} 
         onClickNewButton={onClickNewButton}
-        notes={filterNotes} />
+        notes={sortedNotes} />
         <Content
         updateContentPost={updateContentPost} contentStatus={contentStatus} 
         content={content}
