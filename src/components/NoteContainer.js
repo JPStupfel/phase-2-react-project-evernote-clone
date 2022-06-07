@@ -25,10 +25,13 @@ function NoteContainer() {
     setContentStatus('showNote')
   }
 
-  function updateContent(obj){
-    const newNoteList=[...notes, obj]
+  function updateContentPost(obj){
+    const notesSansUpdater = notes.filter(e=>e.id!==obj.id)
+    const newNoteList=[...notesSansUpdater, obj]
     setNotes(newNoteList)
   }
+
+ 
 
   function onClickNewButton(){
     setContentStatus('addNote')
@@ -51,7 +54,7 @@ function NoteContainer() {
         onClickNewButton={onClickNewButton}
         notes={filterNotes} />
         <Content
-        updateContent={updateContent} contentStatus={contentStatus} 
+        updateContentPost={updateContentPost} contentStatus={contentStatus} 
         content={content}
         onCLickEditButton={onCLickEditButton}
         />

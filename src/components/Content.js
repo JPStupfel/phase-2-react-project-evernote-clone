@@ -11,14 +11,14 @@ import Instructions from "./Instructions";
           Then complete the rest of your app before attempting to
           refactor to get this Content component to work.
 */
-function Content({content, contentStatus, updateContent, onCLickEditButton}) {
+function Content({content, contentStatus, updateContentPost, onCLickEditButton}) {
 
   const getContent = () => {
     if (contentStatus==='addNote') {
-      return <NoteAdder updateContent={updateContent} content={content}/>;
+      return <NoteAdder updateContentPost={updateContentPost} content={content}/>;
     } 
     else if (contentStatus==='editNote'){
-      return <NoteEditor updateContent={updateContent} content={content}/>
+      return <NoteEditor updateContentPost={updateContentPost} content={content}/>
     }
     else if (contentStatus==='showNote') {
       return <NoteViewer onCLickEditButton={onCLickEditButton} content={content}/>;

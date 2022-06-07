@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-function NoteAdder({content, updateContent}) {
+function NoteAdder({content, updateContentPost}) {
 
   const [noteAdd, setNoteAdd] = useState({...content,title:'Untitiled Note', body: 'Write your note here'})
 
@@ -22,7 +22,7 @@ function NoteAdder({content, updateContent}) {
     }
     )
     .then(res=>res.json())
-    .then(data=>{updateContent(data); setNoteAdd({title: '', body:'', userId:1})})
+    .then(data=>{updateContentPost(data); setNoteAdd({title: '', body:'', userId:1})})
     .catch(error=>alert(error))
 
   }
