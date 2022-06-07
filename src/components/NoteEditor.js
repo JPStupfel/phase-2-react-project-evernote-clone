@@ -13,19 +13,19 @@ function NoteEditor({content, updateContent}) {
 
   function handlePostRequest(obj){
     
-    // fetch(`http://localhost:3000/notes`,
-    // {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     'Accept': 'application/json'
-    //   },
-    //   body: JSON.stringify(obj)
-    // }
-    // )
-    // .then(res=>res.json())
-    // .then(data=>{updateContent(data); setNoteAdd({title: '', body:'', userId:1})})
-    // .catch(error=>alert(error))
+    fetch(`http://localhost:3000/notes/${content.id}`,
+    {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(obj)
+    }
+    )
+    .then(res=>res.json())
+    .then(data=>{updateContent(data); setNoteAdd({title: '', body:'', userId:1})})
+    .catch(error=>alert(error))
 
   }
 
