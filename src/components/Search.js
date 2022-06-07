@@ -1,9 +1,12 @@
 import React from "react";
 
-function Search() {
+function Search({setSearchBy}) {
+
+ 
+
   return (
     <div className="filter">
-      <input id="search-bar" type="text" placeholder="Search Notes" />
+      <input onChange={(event)=>setSearchBy(event.target.value)} id="search-bar" type="text" placeholder="Search Notes" />
     </div>
   );
 }

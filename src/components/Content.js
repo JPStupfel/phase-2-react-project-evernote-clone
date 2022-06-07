@@ -1,5 +1,6 @@
 import React from "react";
 import NoteEditor from "./NoteEditor";
+import NoteAdder from "./NoteAdder"
 import NoteViewer from "./NoteViewer";
 import Instructions from "./Instructions";
 
@@ -10,10 +11,10 @@ import Instructions from "./Instructions";
           Then complete the rest of your app before attempting to
           refactor to get this Content component to work.
 */
-function Content({content}) {
+function Content({content, updateContent}) {
   const getContent = () => {
-    if (content.id==='new') {
-      return <NoteEditor />;
+    if (content.title==='new') {
+      return <NoteAdder updateContent={updateContent} content={content}/>;
     } else if (content.id) {
       return <NoteViewer content={content}/>;
     } else {

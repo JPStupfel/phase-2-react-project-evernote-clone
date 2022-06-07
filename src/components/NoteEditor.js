@@ -1,6 +1,6 @@
 import React from "react";
 
-function NoteEditor() {
+function NoteEditor({content}) {
   return (
     <form className="note-editor">
       <input type="text" name="title" />
@@ -14,3 +14,6 @@ function NoteEditor() {
 }
 
 export default NoteEditor;
+
+
+
