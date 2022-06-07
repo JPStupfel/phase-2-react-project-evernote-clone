@@ -7,6 +7,10 @@ function NoteContainer() {
 
   const [notes, setNotes] = useState([])
   const [content, setContent] = useState({status: 'no note selected'})
+
+  //can be 4 options: noNote, showNote, editNote, addNote
+  const [contentStatus, setContentStatus]=useState('noNote')
+
   const [searchBy, setSearchBy] = useState('')
 
   const filterNotes = notes.length ? notes.filter(e=>e.title.toLowerCase().includes(searchBy.toLowerCase())) : notes
@@ -15,11 +19,18 @@ function NoteContainer() {
     ()=>fetch('http://localhost:3000/notes').then(r=>r.json()).then(data=>setNotes(data)),[]
   )
   
-  function onClickNoteItem(obj){setContent(obj)}
+  function onClickNoteItem(obj){
+    setContent(obj)
+    setContentStatus('showNote')
+  }
 
   function updateContent(obj){
     const newNoteList=[...notes, obj]
     setNotes(newNoteList)
+  }
+
+  function onClickNewButton(){
+    setContentStatus('addNote')
   }
 
   
@@ -29,8 +40,13 @@ function NoteContainer() {
     <>
       <Search setSearchBy={setSearchBy}/>
       <div className="container">
-        <Sidebar onClickNoteItem={onClickNoteItem} notes={filterNotes} />
-        <Content updateContent={updateContent} content={content} />
+        <Sidebar 
+
+        setContentStatus={setContentStatus}
+        onClickNoteItem= {onClickNoteItem} 
+        onClickNewButton={onClickNewButton}
+        notes={filterNotes} />
+        <Content updateContent={updateContent} contentStatus={contentStatus} content={content} />
       </div>
     </>
   );

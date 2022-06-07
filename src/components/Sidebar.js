@@ -1,11 +1,11 @@
 import React from "react";
 import NoteList from "./NoteList";
 
-function Sidebar({notes, onClickNoteItem}) {
+function Sidebar({notes, onClickNoteItem, onClickNewButton}) {
   return (
     <div className="master-detail-element sidebar">
       <NoteList onClickNoteItem={onClickNoteItem} notes={notes} />
-      <button onClick={()=>onClickNoteItem({title: 'new', body:'', userId:1})}>New</button>
+      <button onClick={onClickNewButton}>New</button>
     </div>
   );
 }
