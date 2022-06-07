@@ -7,15 +7,22 @@ function NoteContainer() {
 
   const [notes, setNotes] = useState([])
   const [content, setContent] = useState({})
+  const [sortBy, setSortBy]= useState('id')
+  const [searchBy, setSearchBy] = useState('')
+
 
   //can be 4 options: noNote, showNote, editNote, addNote
   const [contentStatus, setContentStatus]=useState('noNote')
 
-  const [searchBy, setSearchBy] = useState('')
+
+
+
+
+
 
   const filterNotes = notes.length ? notes.filter(e=>e.title.toLowerCase().includes(searchBy.toLowerCase())) : notes
 
-  const sortedNotes = filterNotes.sort((a,b)=> a['id']> b['id'])
+  const sortedNotes = filterNotes.sort((a,b)=> a[sortBy]> b[sortBy])
 
   useEffect(
     ()=>fetch('http://localhost:3000/notes').then(r=>r.json()).then(data=>setNotes(data)),[]
