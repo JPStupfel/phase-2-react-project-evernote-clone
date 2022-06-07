@@ -40,6 +40,12 @@ function NoteContainer() {
     setNotes(newNoteList)
   }
 
+  function updateContentPatch(obj){
+
+ const updated = notes.map(e=>e.id===obj.id ? obj : e)
+    setNotes(updated)
+  }
+
  
 
   function onClickNewButton(){
@@ -62,8 +68,11 @@ function NoteContainer() {
         onClickNoteItem= {onClickNoteItem} 
         onClickNewButton={onClickNewButton}
         notes={sortedNotes} />
+
         <Content
-        updateContentPost={updateContentPost} contentStatus={contentStatus} 
+        updateContentPost={updateContentPost}
+        updateContentPatch={updateContentPatch}
+        contentStatus={contentStatus} 
         content={content}
         onCLickEditButton={onCLickEditButton}
         />

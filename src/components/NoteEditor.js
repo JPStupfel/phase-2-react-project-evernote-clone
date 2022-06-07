@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-function NoteEditor({content, updateContentPost}) {
+function NoteEditor({content, updateContentPatch}) {
 
   const [noteAdd, setNoteAdd] = useState(content)
 
@@ -24,7 +24,7 @@ function NoteEditor({content, updateContentPost}) {
     }
     )
     .then(res=>res.json())
-    .then(data=>{updateContentPost(data); setNoteAdd({title: '', body:'', userId:1})})
+    .then(data=>{updateContentPatch(data); setNoteAdd({title: '', body:'', userId:1})})
     .catch(error=>alert(error))
 
   }
