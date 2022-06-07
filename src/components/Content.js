@@ -18,7 +18,7 @@ function Content({content, contentStatus, updateContent, onCLickEditButton}) {
       return <NoteAdder updateContent={updateContent} content={content}/>;
     } 
     else if (contentStatus==='editNote'){
-      return <NoteEditor />
+      return <NoteEditor updateContent={updateContent} content={content}/>
     }
     else if (contentStatus==='showNote') {
       return <NoteViewer onCLickEditButton={onCLickEditButton} content={content}/>;
